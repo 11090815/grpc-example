@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package protomessage;
+
+option go_package = "github.com/11090815/grpc-example/proto-message";
+
+message Request {
+    bytes plaintext = 1;
+}
+
+message Response {
+    bytes ciphertext = 1;
+}
+
+service Encrypter {
+    rpc Encrypt(Request) returns (Response);
+    rpc EncryptStream(stream Request) returns (stream Response);
+}
